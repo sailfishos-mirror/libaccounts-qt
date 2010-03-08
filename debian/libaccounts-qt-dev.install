@@ -1,0 +1,3 @@
+usr/lib/libaccounts-qt*.so
+usr/lib/pkgconfig/accounts-qt.pc
+usr/include/accounts-qt/*

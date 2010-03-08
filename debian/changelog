@@ -1,0 +1,207 @@
+accounts-qt (0.22) unstable; urgency=low
+
+  * Fixes: NB#156022 - Icons needed for account and service (libaccount-qt).
+  * Fixes: NB#158282 - Account::selectService() inappropriate behavior.
+ 
+ -- Aurel Popirtac <ext-aurel.popirtac@nokia.com>  Mon, 01 Mar 2010 15:00:00 +0200
+
+accounts-qt (0.21) unstable; urgency=low
+
+  * Move include files to new folder, so that they can be now included as
+    <Accounts/*ClassName*>
+  * Fix one failing test case.
+  * Add qmake configuration feature file.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 25 Feb 2010 09:20:31 +0200
+
+accounts-qt (0.20.1) unstable; urgency=low
+
+  * Minor update of account-qt public API
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Feb, 10 Feb 2010 14:13:35 +0200
+
+accounts-qt (0.19-1) unstable; urgency=low
+
+  * Deprecate the Model class.
+  * Add namespace to Manager's signals.
+  * Correctly map the account to libaccounts-glib sign/verify functions.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 18 Jan 2010 14:13:35 +0200
+
+accounts-qt (0.18-1) unstable; urgency=low
+
+  * Add missing files to test package.
+  * Fix a reference counting bug.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 21 Dec 2009 11:25:48 +0200
+
+accounts-qt (0.17-2) unstable; urgency=low
+
+  * Add test for sign/verify the key
+  * Merge branch cons_domdocument
+
+ -- Radek Zielonka <ext-radek.zielonka@nokia.com>  Tue, 15 Dec 2009 14:10:13 +0200
+
+accounts-qt (0.17-1) unstable; urgency=low
+
+  * Add signing and verifying the key 
+
+ -- Radek Zielonka <ext-radek.zielonka@nokia.com>  Mon, 14 Dec 2009 12:09:29 +0200
+
+accounts-qt (0.16-1) unstable; urgency=low
+
+  * Fixes: NB#150007 accounts-qt: missing doxygen from build dependencies
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 10 Dec 2009 16:37:26 +0200
+
+accounts-qt (0.15-2) unstable; urgency=low
+
+  * Rename accounts-qt packages to libaccounts-qt
+  * Fix debug package to include debug symbols
+  * Fix development package to provide the .so symbolic link.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 26 Nov 2009 16:37:26 +0200
+
+accounts-qt (0.15-1) unstable; urgency=low
+
+  * Add automated tests to CI.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Wed, 25 Nov 2009 12:18:08 +0200
+
+accounts-qt (0.14-1) unstable; urgency=low
+
+  * Disconnect libaccounts-glib signals when objects are destructed.
+  * Allow disabling of debug output.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 12 Nov 2009 09:44:36 +0200
+
+accounts-qt (0.13-1) unstable; urgency=low
+
+  * Proper implementation of blocking sync().
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu,  5 Nov 2009 14:52:21 +0200
+
+accounts-qt (0.12-1) unstable; urgency=low
+
+  * Add header data to the model (patch by Smita Srivastava).
+  * Add support for unsigned long long type (patch by Dmitry Zelenkovsky).
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon,  2 Nov 2009 09:56:58 +0200
+
+accounts-qt (0.11-1) unstable; urgency=low
+
+  * Add blocking version of sync().
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 29 Oct 2009 15:07:07 +0200
+
+accounts-qt (0.10-1) unstable; urgency=low
+
+  * Add provider name and account id to model. 
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 29 Oct 2009 10:22:07 +0200
+
+accounts-qt (0.9-1) unstable; urgency=low
+
+  * Service and Provider objects are now owned by the Manager, and cannot be
+    deleted.
+
+  * Added a method on the Account to retrieve the Manager.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Tue, 27 Oct 2009 11:40:20 +0200
+
+accounts-qt (0.8-1) unstable; urgency=low
+
+  * Improve documentation.
+
+  * Patch by Dmitry Zelenkovski: fix namespace in Account::error signal.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 12 Oct 2009 10:29:24 +0300
+
+accounts-qt (0.7-1) unstable; urgency=low
+
+  * Fix the -doc package.
+
+  * Service and Provider: don't return a pointer to the QDomDocument, but the
+    QDomDocument itself (it's a shared object).
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon,  5 Oct 2009 10:01:08 +0300
+
+accounts-qt (0.6-1) unstable; urgency=low
+
+  * Add APIs for listing and loading provider XML files.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 21 Sep 2009 15:14:31 +0300
+
+accounts-qt (0.5-2) unstable; urgency=low
+
+  * Fix compilation.
+
+  * Remove unused files.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 17 Sep 2009 11:58:11 +0300
+
+accounts-qt (0.5-1) unstable; urgency=low
+
+  * Add a method to return the DOM of the service XML files.
+
+  * Change licence to LGPL.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 17 Sep 2009 10:38:00 +0300
+
+accounts-qt (0.4-1) unstable; urgency=low
+
+  * Implement QSettings-like API.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Wed, 19 Aug 2009 10:50:15 +0300
+
+accounts-qt (0.3-1) unstable; urgency=low
+
+  * Implement change notifications.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu,  6 Aug 2009 13:39:01 +0300
+
+accounts-qt (0.2-1) unstable; urgency=low
+
+  * build to remove the epoche 1: no other changes 
+
+ -- Reto Zingg <reto.zingg@nokia.com>  Wed, 29 Jul 2009 11:25:41 +0300
+
+accounts-qt (0.1) unstable; urgency=low
+
+  * Shorten versioning scheme.
+
+  * Add the AccountModel class.
+
+  * Rewrite value() and setValue(), add more wrapping.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu,  9 Jul 2009 16:10:05 +0300
+
+accounts-qt (0.0.4-1) unstable; urgency=low
+
+  * Clean up build process so that clients don't need to depend on
+    libaccounts-glib or anything glib-related.
+
+  * Avoid duplicating data that is already present in the libaccounts-glib
+    objects.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu,  2 Jul 2009 13:31:44 +0300
+
+accounts-qt (0.0.3-1) unstable; urgency=low
+
+  * Started to use accounts-glib.
+  * Strings can be stored and retrieved.
+
+ -- Tomi Suviola <ext-tomi.suviola@nokia.com>  Fri, 26 Jun 2009 16:24:08 +0300
+
+accounts-qt (0.0.2-1) unstable; urgency=low
+
+  * Added account tool.
+
+ -- Tomi Suviola <ext-tomi.suviola@nokia.com>  Tue, 16 Jun 2009 12:24:08 +0300
+
+accounts-qt (0.0.1-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Tomi Suviola <ext-tomi.suviola@nokia.com>  Fri, 17 Apr 2009 15:24:08 +0300
+

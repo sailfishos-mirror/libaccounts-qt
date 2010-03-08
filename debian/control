@@ -1,0 +1,59 @@
+Source: accounts-qt
+Section: libs
+Priority: optional
+Maintainer: Alberto Mardegan <Alberto.Mardegan@nokia.com>
+Build-Depends: debhelper (>= 5), doxygen, libqt4-dev (>= 4.5), libaccounts-glib-dev (>= 0.26), libglib2.0-dev
+Standards-Version: 3.7.2
+
+Package: libaccounts-qt1
+Architecture: any
+Priority: optional
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Accounts framework
+ Framework to provide accounts
+
+Package: libaccounts-qt-dbg
+Architecture: any
+Priority: extra
+Depends: libaccounts-qt1 (= ${Source-Version})
+Description: Debug symbols for accounts0
+ Debug version of the accounts.
+
+Package: libaccounts-qt-dev
+Architecture: any
+Priority: extra
+Section: libdevel
+Depends: libaccounts-qt1 (= ${binary:Version}), libqt4-dev (>= 4.5)
+Description: Development files for accounts-qt
+ Headers and static libraries for the accounts.
+
+Package: libaccounts-qt-doc
+Architecture: all
+Section: doc
+Priority: optional
+Description: Documentation for accounts-qt
+ Doxygen-generated HTML documentation for the accounts.
+
+Package: libaccounts-qt-tests
+Architecture: any
+Depends: ${shlibs:Depends}, ci-testing
+XB-Maemo-CI-Packages: libaccounts-qt1
+XB-Maemo-CI-Stage: staging, acceptance
+Description: Tests for accounts-qt
+ Tests for accounts-qt.
+
+Package: accounts-qt0
+Architecture: any
+Priority: optional
+Depends: libaccounts-qt1
+Description: Accounts framework (migration package)
+ Framework to provide accounts
+
+Package: accounts-qt-dev
+Architecture: any
+Priority: extra
+Section: libdevel
+Depends: libaccounts-qt-dev
+Description: Development files for accounts-qt (migration package)
+ Headers and static libraries for the accounts.
+
