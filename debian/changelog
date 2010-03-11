@@ -1,3 +1,10 @@
+accounts-qt (0.24) unstable; urgency=low
+
+  * Fixes: NB#160125 - Credentials always come as 0 if service is selected
+    before the credentialsId function call.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 11 Mar 2010 12:11:18 +0200
+
 accounts-qt (0.23) unstable; urgency=low
 
   * Fix issues reported by Coverity.
