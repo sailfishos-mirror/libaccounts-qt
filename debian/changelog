@@ -1,3 +1,9 @@
+accounts-qt (0.25) unstable; urgency=low
+
+  * Fixes: NB#161778 - <MemLeak> valgrind libaccounts-qt-tests
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Fri, 09 Apr 2010 12:11:18 +0200
+
 accounts-qt (0.24) unstable; urgency=low
 
   * Fixes: NB#160125 - Credentials always come as 0 if service is selected
