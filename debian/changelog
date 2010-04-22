@@ -1,3 +1,10 @@
+accounts-qt (0.25-1) unstable; urgency=low
+
+  * Wrapper for account-glib - notification  of enabled_event
+  * and service type spec
+
+ -- Radek Zielonka <ext-radek.zielonka@nokia.com>  Thu, 22 Apr 2010 12:45:38 +0300
+
 accounts-qt (0.25) unstable; urgency=low
 
   * Fixes: NB#161778 - <MemLeak> valgrind libaccounts-qt-tests
