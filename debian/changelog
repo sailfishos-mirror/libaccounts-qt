@@ -1,3 +1,10 @@
+accounts-qt (0.26-1) unstable; urgency=low
+
+  * Improve debugging by adding a warning if the AgManager is NULL, and remove
+    some unneeded debug statements.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Fri, 30 Apr 2010 15:19:30 +0300
+
 accounts-qt (0.25-1) unstable; urgency=low
 
   * Wrapper for account-glib - notification  of enabled_event
