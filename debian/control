@@ -15,8 +15,8 @@ Description: Accounts framework
 Package: libaccounts-qt-dbg
 Architecture: any
 Priority: extra
-Depends: libaccounts-qt1 (= ${Source-Version})
-Description: Debug symbols for accounts0
+Depends: libaccounts-qt1 (= ${binary:Version})
+Description: Debug symbols for libaccounts-qt
  Debug version of the accounts.
 
 Package: libaccounts-qt-dev
@@ -41,6 +41,12 @@ XB-Maemo-CI-Packages: libaccounts-qt1
 XB-Maemo-CI-Stage: staging, acceptance
 Description: Tests for accounts-qt
  Tests for accounts-qt.
+
+Package: libaccounts-qt-tests-dbg
+Architecture: any
+Depends: ${shlibs:Depends}, libaccounts-qt-tests
+Description: Debug symbols for libaccounts-qt-tests
+  Debug version of the libaccounts-qt-tests
 
 Package: accounts-qt0
 Architecture: any
