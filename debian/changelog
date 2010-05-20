@@ -1,3 +1,9 @@
+accounts-qt (0.27-1) unstable; urgency=low
+
+  * Add customizable DB timeout.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 20 May 2010 14:09:32 +0300
+
 accounts-qt (0.26-2) unstable; urgency=low
 
   * Change dbg packaging to have correct symbols. 
