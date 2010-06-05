@@ -1,4 +1,4 @@
-ccounts-qt (0.28-1) unstable; urgency=low
+accounts-qt (0.28-2) unstable; urgency=low
 
   * Adapted to the latest QT 4.6.3 version.
 
