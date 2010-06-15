@@ -1,0 +1,6 @@
+interface: libaccounts-qt1
+type: library
+scope: Nokia MeeGo
+state: unstable
+libs-pkg: libaccounts-qt1
+dev-pkg: libaccounts-qt-dev
