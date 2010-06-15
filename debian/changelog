@@ -1,3 +1,10 @@
+accounts-qt (0.28-3) unstable; urgency=low
+
+  * Fixes: NB#173435 - Add API file to accounts-qt
+  * Update the XML service test files.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Tue, 15 Jun 2010 12:21:57 +0300
+
 accounts-qt (0.28-2) unstable; urgency=low
 
   * Adapted to the latest QT 4.6.3 version.
