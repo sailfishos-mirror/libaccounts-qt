@@ -1,3 +1,9 @@
+accounts-qt (0.29-1) unstable; urgency=low
+
+  * Add the ServiceType class.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 28 Jun 2010 11:18:44 +0300
+
 accounts-qt (0.28-3) unstable; urgency=low
 
   * Fixes: NB#173435 - Add API file to accounts-qt
