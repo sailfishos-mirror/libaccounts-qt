@@ -68,8 +68,8 @@ public:
     QString displayName() const;
 
     /*!
-      * Returns the translation catalog of the service
-      */
+     * Returns the translation catalog of the service
+     */
     QString trCatalog() const;
 
     /*!
