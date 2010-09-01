@@ -1,3 +1,10 @@
+accounts-qt (0.34-1) unstable; urgency=low
+
+  * Fixes: NB#187781 - Accounts system should return error code of a failed
+    DB operation.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Wed, 01 Sep 2010 13:26:19 +0300
+
 accounts-qt (0.33-1) unstable; urgency=low
 
   * Adding a member to fetch translation catalog from glib for service files
