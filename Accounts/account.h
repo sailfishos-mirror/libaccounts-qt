@@ -20,6 +20,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA
  */
+/*!
+ * @copyright Copyright (C) 2009-2010 Nokia Corporation.
+ * @license LGPL
+ */
 
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
@@ -183,15 +187,19 @@ public:
     ServiceList enabledServices() const;
 
     /*!
-     * Checks whether the account is enabled.
+     * Checks whether the account or selected service is enabled.
+     *
+     * This method operates on the currently selected service or
+     * globally, if none selected.
      */
     bool enabled() const;
 
     /*!
-     * Enables/disables the account.
+     * Enables/disables the account or selected service.
      * The change will be written only when sync() is called.
      *
-     * This method operates on the currently selected service.
+     * This method operates on the currently selected service or
+     * globally, if none selected.
      */
     void setEnabled(bool);
 
