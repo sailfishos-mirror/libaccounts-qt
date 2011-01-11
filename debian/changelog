@@ -1,3 +1,10 @@
+accounts-qt (0.37-1) unstable; urgency=low
+
+  * Fixes: NB#199314 - Copyright tag not defined in accounts-qt.
+  * Fixes: NB#192230 - Confusing documentation in Accounts::Account.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Tue, 11 Jan 2011 11:41:08 +0200
+
 accounts-qt (0.36-1) unstable; urgency=low
 
   * Fixes: NB#204287 - libaccounts-qt does not support RTTI.
