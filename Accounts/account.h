@@ -20,6 +20,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA
  */
+/*!
+ * @copyright Copyright (C) 2009-2010 Nokia Corporation.
+ * @license LGPL
+ */
 
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
@@ -30,6 +34,7 @@
 #include <QStringList>
 
 #include "Accounts/accountscommon.h"
+#include "Accounts/error.h"
 #include "Accounts/service.h"
 
 #define ACCOUNTS_KEY_CREDENTIALS_ID QLatin1String("CredentialsId")
@@ -64,6 +69,7 @@ enum SettingSource
 enum ErrorCode
 {
     /* The value of this enum must be the same as AgError */
+    // TODO remove when the deprecated Error() signal using it is removed
     Database = 0,
     Disposed,
     Deleted,
@@ -181,15 +187,19 @@ public:
     ServiceList enabledServices() const;
 
     /*!
-     * Checks whether the account is enabled.
+     * Checks whether the account or selected service is enabled.
+     *
+     * This method operates on the currently selected service or
+     * globally, if none selected.
      */
     bool enabled() const;
 
     /*!
-     * Enables/disables the account.
+     * Enables/disables the account or selected service.
      * The change will be written only when sync() is called.
      *
-     * This method operates on the currently selected service.
+     * This method operates on the currently selected service or
+     * globally, if none selected.
      */
     void setEnabled(bool);
 
@@ -471,7 +481,16 @@ signals:
     void displayNameChanged(const QString &displayName);
     void enabledChanged(const QString &serviceName, bool enabled);
 
+    /*!
+     * @deprecated This signal is deprecated and will eventually be removed.
+     * @sa error(Account::Error)
+     */
     void error(Accounts::ErrorCode errorCode);
+
+    /*!
+     * Emitted when an error occurs.
+     */
+    void error(Accounts::Error error);
     void synced();
 
     void removed();

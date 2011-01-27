@@ -1,3 +1,30 @@
+accounts-qt (0.37-1) unstable; urgency=low
+
+  * Fixes: NB#199314 - Copyright tag not defined in accounts-qt.
+  * Fixes: NB#192230 - Confusing documentation in Accounts::Account.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Tue, 11 Jan 2011 11:41:08 +0200
+
+accounts-qt (0.36-1) unstable; urgency=low
+
+  * Fixes: NB#204287 - libaccounts-qt does not support RTTI.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 02 Dec 2010 12:03:05 +0200
+
+accounts-qt (0.35-1) unstable; urgency=low
+
+  *  Fixes: NB#194673 -  Source package 'accounts-qt' interface 'libaccounts-qt1'
+     not frozen in 0.2010.38-9 
+
+ -- Radek Zielonka <ext-radek.zielonka@nokia.com>  Tue, 05 Oct 2010 11:47:54 +0300
+
+accounts-qt (0.34-1) unstable; urgency=low
+
+  * Fixes: NB#187781 - Accounts system should return error code of a failed
+    DB operation.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Wed, 01 Sep 2010 13:26:19 +0300
+
 accounts-qt (0.33-1) unstable; urgency=low
 
   * Adding a member to fetch translation catalog from glib for service files

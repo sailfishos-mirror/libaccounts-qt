@@ -8,28 +8,30 @@ TEMPLATE = lib
 HEADERS += accountscommon.h \
     Manager manager.h \
     Account account.h \
+    Error error.h \
     Provider provider.h \
     Service service.h \
     ServiceType service-type.h
 SOURCES += manager.cpp \
     account.cpp \
+    error.cpp \
     provider.cpp \
     service.cpp \
     service-type.cpp
 
 CONFIG += link_pkgconfig
 
-LIBS += -laccounts-glib
 DEFINES += QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
 QT += core xml
 QT -= gui
 TARGET = accounts-qt
-PKGCONFIG += glib-2.0 \
-             gobject-2.0
+PKGCONFIG += \
+	glib-2.0 \
+	gobject-2.0 \
+	libaccounts-glib
 
-QMAKE_CXXFLAGS = \
+QMAKE_CXXFLAGS += \
     -fno-exceptions \
-    -fno-rtti \
     -fvisibility=hidden
 
 headers.files = $$HEADERS

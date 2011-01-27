@@ -75,6 +75,7 @@ public:
     ProviderHash providers;
     ServiceHash services;
     ServiceTypeHash serviceTypes;
+    Error lastError;
 
     static void on_account_created(Manager *self, AgAccountId id);
     static void on_account_deleted(Manager *self, AgAccountId id);
@@ -183,12 +184,18 @@ Account *Manager::account(const AccountId &id) const
 {
     TRACE() << "get account id: " << id;
 
-    AgAccount *account = ag_manager_get_account(d->m_manager, id);
+    GError *error = NULL;
+    AgAccount *account = ag_manager_load_account(d->m_manager, id, &error);
 
     if (account != NULL) {
+        Q_ASSERT(error == NULL);
         Account *tmp = new Account(account, const_cast<Manager*>(this));
         g_object_unref(account);
         return tmp;
+    } else {
+        Q_ASSERT(error != NULL);
+        d->lastError = Error(error);
+        g_error_free(error);
     }
     return NULL;
 }
@@ -393,5 +400,20 @@ void Manager::setTimeout(quint32 timeout)
 quint32 Manager::timeout()
 {
     return ag_manager_get_db_timeout(d->m_manager);
+}
+
+void Manager::setAbortOnTimeout(bool abort)
+{
+    ag_manager_set_abort_on_db_timeout(d->m_manager, abort);
+}
+
+bool Manager::abortOnTimeout() const
+{
+    return ag_manager_get_abort_on_db_timeout(d->m_manager);
+}
+
+Error Manager::lastError() const
+{
+    return d->lastError;
 }
 
