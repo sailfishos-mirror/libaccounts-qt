@@ -1,3 +1,9 @@
+accounts-qt (0.38-1) unstable; urgency=low
+
+  * Fixes: NB#221488 - API: Method needed for getting provider icon
+
+ -- Smita Srivastava <ext-smita.srivastava@nokia.com>  Thu, 27 Jan 2011 11:11:00 +0300
+
 accounts-qt (0.37-1) unstable; urgency=low
 
   * Fixes: NB#199314 - Copyright tag not defined in accounts-qt.
