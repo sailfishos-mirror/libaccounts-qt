@@ -1,3 +1,10 @@
+accounts-qt (0.39-1) unstable; urgency=low
+
+  * Documentation updates.
+    Fixes: NB#235437 - The API documentation page is empty in accounts-qt
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 21 Mar 2011 09:28:34 +0200
+
 accounts-qt (0.38-1) unstable; urgency=low
 
   * Fixes: NB#221488 - API: Method needed for getting provider icon
