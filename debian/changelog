@@ -1,7 +1,14 @@
+accounts-qt (0.40-1) unstable; urgency=low
+
+  * Fixes: NB#235437 The API documentation page is empty in accounts-qt
+  * Fixes: NB#204457 - Error type is not returned when DB is locked
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 24 Mar 2011 13:34:27 +0200
+
 accounts-qt (0.39-1) unstable; urgency=low
 
   * Documentation updates.
-    Fixes: NB#235437 - The API documentation page is empty in accounts-qt
+    Addresses: NB#235437 - The API documentation page is empty in accounts-qt
 
  -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 21 Mar 2011 09:28:34 +0200
 
