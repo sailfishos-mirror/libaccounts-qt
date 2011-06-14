@@ -128,6 +128,8 @@ binary-arch: build install
 	dh_md5sums
 	dh_builddeb
 
+	aegis-deb-add -control debian/libaccounts-qt-tests/DEBIAN/control .. debian/libaccounts-qt-tests.aegis=_aegis
+
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install configure
 
