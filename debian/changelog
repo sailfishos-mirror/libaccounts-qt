@@ -1,3 +1,10 @@
+accounts-qt (0.43-1) unstable; urgency=low
+
+  * UNRELEASED
+  * Fixes: NB#243272 - Doxygen config fields missing from libaccounts-qt debian/api
+
+ -- Smita Srivastava <smita.srivastava@teleca.com>  Mon, 25 Jul 2011 09:36:55 +0300
+
 accounts-qt (0.42-1) unstable; urgency=low
 
   * Fixes: NB#257917 - Copyright text in Accounts-Qt API documentation has outdated year
