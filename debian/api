@@ -4,3 +4,5 @@ scope: Nokia MeeGo
 state: stable
 libs-pkg: libaccounts-qt1
 dev-pkg: libaccounts-qt-dev
+doc-type: doxygen
+doxygen-conf: doc/doxy.conf
