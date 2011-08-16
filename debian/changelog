@@ -1,6 +1,12 @@
-accounts-qt (1.0-1) unstable; urgency=low
+accounts-qt (1.1-1) unstable; urgency=low
 
   * Fixes: NB#243272 - Doxygen config fields missing from libaccounts-qt debian/api
+
+ -- Smita Srivastava <smita.srivastava@teleca.com>  Tue, 16 Aug 2011 16:12:27 +0300
+
+accounts-qt (1.0-1) unstable; urgency=low
+
+  * Addresses: NB#243272 - Doxygen config fields missing from libaccounts-qt debian/api
 
  -- Smita Srivastava <smita.srivastava@teleca.com>  Mon, 25 Jul 2011 09:36:55 +0300
 
