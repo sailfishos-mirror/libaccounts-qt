@@ -7,7 +7,7 @@ cache:
 
 before_script:
   - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
-  - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y qt5-qmake qtbase5-dev qtchooser pkg-config doxygen libaccounts-glib-dev
+  - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y qt5-qmake qttools5-dev-tools qtbase5-dev qtchooser pkg-config doxygen libaccounts-glib-dev
   - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y dbus-test-runner lcov gcovr
 
 build_amd64:
@@ -30,3 +30,25 @@ test_amd64:
     - make coverage-html
   dependencies:
     - build_amd64
+  artifacts:
+    paths:
+      - build/
+
+pages:
+  stage: deploy
+  script:
+    - find build | xargs touch # Avoid rebuilding
+    - cd build
+    - make docs
+    - cd ..
+    - mkdir public
+    - cp -a build/coverage-html public/coverage
+    - cp -a build/doc/html/* public/
+  dependencies:
+    - test_amd64
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+

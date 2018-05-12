@@ -21,3 +21,10 @@ qmake
 make
 make install
 ```
+
+Resources
+---------
+
+[API reference documentation](http://accounts-sso.gitlab.io/libaccounts-qt/)
+
+[Official source code repository](https://gitlab.com/accounts-sso/libaccounts-qt)
