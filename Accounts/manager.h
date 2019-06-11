@@ -69,13 +69,13 @@ public:
 
     Account *account(const AccountId &id) const;
 
-    AccountIdList accountList(const QString &serviceType = QString::null) const;
-    AccountIdList accountListEnabled(const QString &serviceType = QString::null) const;
+    AccountIdList accountList(const QString &serviceType = QString()) const;
+    AccountIdList accountListEnabled(const QString &serviceType = QString()) const;
 
     Account *createAccount(const QString &providerName);
 
     Service service(const QString &serviceName) const;
-    ServiceList serviceList(const QString &serviceType = QString::null) const;
+    ServiceList serviceList(const QString &serviceType = QString()) const;
     ServiceList serviceList(const Application &application) const;
 
     Provider provider(const QString &providerName) const;

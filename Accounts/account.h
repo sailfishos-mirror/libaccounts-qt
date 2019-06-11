@@ -162,7 +162,7 @@ public:
                    SettingSource *source = 0) const;
     SettingSource value(const QString &key, QVariant &value) const;
     QString valueAsString(const QString &key,
-                          QString default_value = QString::null,
+                          QString default_value = QString(),
                           SettingSource *source = 0) const;
     int valueAsInt(const QString &key,
                    int default_value = 0,
