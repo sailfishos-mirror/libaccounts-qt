@@ -1,4 +1,4 @@
-image: ubuntu:devel
+image: ubuntu:bionic
 
 cache:
   key: apt-cache
