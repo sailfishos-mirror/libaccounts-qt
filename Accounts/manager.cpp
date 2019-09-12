@@ -94,8 +94,8 @@ using namespace Accounts;
 
 void Manager::Private::init(Manager *q, AgManager *manager)
 {
-    Q_ASSERT(q_ptr == 0);
-    Q_ASSERT(m_manager == 0);
+    Q_ASSERT(q_ptr == nullptr);
+    Q_ASSERT(m_manager == nullptr);
 
     q_ptr = q;
     m_manager = manager;
@@ -149,7 +149,7 @@ Manager::Manager(QObject *parent):
 {
     AgManager *manager = ag_manager_new();
 
-    if (manager != 0) {
+    if (manager != nullptr) {
         d->init(this, manager);
     } else {
         qWarning() << "Manager could not be created. DB is locked";
@@ -177,7 +177,7 @@ Manager::Manager(const QString &serviceType, QObject *parent):
     AgManager *manager =
         ag_manager_new_for_service_type(serviceType.toUtf8().constData());
 
-    if (manager != 0) {
+    if (manager != nullptr) {
         d->init(this, manager);
     } else {
         qWarning() << "Manager could not be created, DB is locked";
@@ -227,7 +227,7 @@ Manager::~Manager()
     g_object_unref(d->m_manager);
 
     delete d;
-    d = 0;
+    d = nullptr;
 }
 
 /*!
@@ -245,7 +245,7 @@ Manager::~Manager()
 Account *Manager::account(const AccountId &id) const
 {
     Account *account = d->m_accounts.value(id, 0);
-    if (account == 0) {
+    if (account == nullptr) {
         /* Create a new account object */
         account = Account::fromId(const_cast<Manager*>(this), id,
                                   const_cast<Manager*>(this));

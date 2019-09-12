@@ -75,7 +75,7 @@ public:
     /* We don't want to document these.
      * \cond
      */
-    Watch(QObject *parent = 0);
+    Watch(QObject *parent = nullptr);
     ~Watch();
 
     void setWatch(AgAccountWatch w) { watch = w; };
@@ -97,11 +97,11 @@ class ACCOUNTS_EXPORT Account: public QObject
     Q_OBJECT
 
 public:
-    Account(Manager *manager, const QString &provider, QObject *parent = 0);
+    Account(Manager *manager, const QString &provider, QObject *parent = nullptr);
     virtual ~Account();
 
     static Account *fromId(Manager *manager, AccountId id,
-                           QObject *parent = 0);
+                           QObject *parent = nullptr);
 
     AccountId id() const;
 
@@ -159,20 +159,20 @@ public:
     void setValue(const QString &key, const QVariant &value);
     QVariant value(const QString &key,
                    const QVariant &defaultValue = QVariant(),
-                   SettingSource *source = 0) const;
+                   SettingSource *source = nullptr) const;
     SettingSource value(const QString &key, QVariant &value) const;
     QString valueAsString(const QString &key,
                           QString default_value = QString(),
-                          SettingSource *source = 0) const;
+                          SettingSource *source = nullptr) const;
     int valueAsInt(const QString &key,
                    int default_value = 0,
-                   SettingSource *source = 0) const;
+                   SettingSource *source = nullptr) const;
     quint64 valueAsUInt64(const QString &key,
                    quint64 default_value = 0,
-                   SettingSource *source = 0) const;
+                   SettingSource *source = nullptr) const;
     bool valueAsBool(const QString &key,
                      bool default_value = false,
-                     SettingSource *source = 0) const;
+                     SettingSource *source = nullptr) const;
 
     Watch *watchKey(const QString &key = QString());
 
@@ -198,7 +198,7 @@ private:
     AgAccount *account();
     // Don't include private data in docs: \cond
     class Private;
-    Account(Private *d, QObject *parent = 0);
+    Account(Private *d, QObject *parent = nullptr);
     friend class Manager;
     friend class Account::Private;
     friend class Watch;

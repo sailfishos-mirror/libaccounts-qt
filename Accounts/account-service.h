@@ -74,9 +74,9 @@ public:
 
     QVariant value(const QString &key,
                    const QVariant &defaultValue,
-                   SettingSource *source = 0) const;
-    QVariant value(const QString &key, SettingSource *source = 0) const;
-    QVariant value(const char *key, SettingSource *source = 0) const;
+                   SettingSource *source = nullptr) const;
+    QVariant value(const QString &key, SettingSource *source = nullptr) const;
+    QVariant value(const char *key, SettingSource *source = nullptr) const;
 
     QStringList changedFields() const;
 

@@ -116,7 +116,7 @@ QVariant gVariantToQVariant(GVariant *value)
 
 GVariant *qVariantToGVariant(const QVariant &variant)
 {
-    GVariant *ret = 0;
+    GVariant *ret = nullptr;
     QByteArray tmpvalue;
 
     switch (variant.type())

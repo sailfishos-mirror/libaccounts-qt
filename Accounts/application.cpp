@@ -51,7 +51,7 @@ Application::Application(AgApplication *application):
  * Construct an invalid application.
  */
 Application::Application():
-    m_application(0)
+    m_application(nullptr)
 {
 }
 
@@ -62,17 +62,17 @@ Application::Application():
 Application::Application(const Application &other):
     m_application(other.m_application)
 {
-    if (m_application != 0)
+    if (m_application != nullptr)
         ag_application_ref(m_application);
 }
 
 Application &Application::operator=(const Application &other)
 {
     if (m_application == other.m_application) return *this;
-    if (m_application != 0)
+    if (m_application != nullptr)
         ag_application_unref(m_application);
     m_application = other.m_application;
-    if (m_application != 0)
+    if (m_application != nullptr)
         ag_application_ref(m_application);
     return *this;
 }
@@ -82,9 +82,9 @@ Application &Application::operator=(const Application &other)
  */
 Application::~Application()
 {
-    if (m_application != 0) {
+    if (m_application != nullptr) {
         ag_application_unref(m_application);
-        m_application = 0;
+        m_application = nullptr;
     }
 }
 
@@ -94,7 +94,7 @@ Application::~Application()
  */
 bool Application::isValid() const
 {
-    return m_application != 0;
+    return m_application != nullptr;
 }
 
 /*!

@@ -46,7 +46,7 @@ namespace Accounts {
 Provider::Provider(AgProvider *provider, ReferenceMode mode):
     m_provider(provider)
 {
-    if (m_provider != 0 && mode == AddReference)
+    if (m_provider != nullptr && mode == AddReference)
         ag_provider_ref(m_provider);
 }
 
@@ -54,7 +54,7 @@ Provider::Provider(AgProvider *provider, ReferenceMode mode):
  * Construct an invalid provider.
  */
 Provider::Provider():
-    m_provider(0)
+    m_provider(nullptr)
 {
 }
 
@@ -65,26 +65,26 @@ Provider::Provider():
 Provider::Provider(const Provider &other):
     m_provider(other.m_provider)
 {
-    if (m_provider != 0)
+    if (m_provider != nullptr)
         ag_provider_ref(m_provider);
 }
 
 Provider &Provider::operator=(const Provider &other)
 {
     if (m_provider == other.m_provider) return *this;
-    if (m_provider != 0)
+    if (m_provider != nullptr)
         ag_provider_unref(m_provider);
     m_provider = other.m_provider;
-    if (m_provider != 0)
+    if (m_provider != nullptr)
         ag_provider_ref(m_provider);
     return *this;
 }
 
 Provider::~Provider()
 {
-    if (m_provider != 0) {
+    if (m_provider != nullptr) {
         ag_provider_unref(m_provider);
-        m_provider = 0;
+        m_provider = nullptr;
     }
 }
 
@@ -94,7 +94,7 @@ Provider::~Provider()
  */
 bool Provider::isValid() const
 {
-    return m_provider != 0;
+    return m_provider != nullptr;
 }
 
 /*!

@@ -65,7 +65,7 @@ AuthData::AuthData(const AuthData &other):
 AuthData::~AuthData()
 {
     ag_auth_data_unref(m_authData);
-    m_authData = 0;
+    m_authData = nullptr;
 }
 
 /*!
@@ -106,7 +106,7 @@ QVariantMap AuthData::parameters() const
     GVariant *glibParameters;
 
     glibParameters = ag_auth_data_get_login_parameters(m_authData, NULL);
-    if (glibParameters == 0) return QVariantMap();
+    if (glibParameters == nullptr) return QVariantMap();
 
     QVariant variant = gVariantToQVariant(glibParameters);
     g_variant_unref(glibParameters);

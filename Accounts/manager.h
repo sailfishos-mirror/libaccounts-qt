@@ -62,9 +62,9 @@ public:
     };
     Q_DECLARE_FLAGS(Options, Option)
 
-    Manager(QObject *parent = 0);
-    Manager(const QString &serviceType, QObject *parent = 0);
-    Manager(Options options, QObject *parent = 0);
+    Manager(QObject *parent = nullptr);
+    Manager(const QString &serviceType, QObject *parent = nullptr);
+    Manager(Options options, QObject *parent = nullptr);
     ~Manager();
 
     Account *account(const AccountId &id) const;

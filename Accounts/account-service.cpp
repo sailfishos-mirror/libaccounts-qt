@@ -153,7 +153,7 @@ AccountServicePrivate::~AccountServicePrivate()
     g_signal_handlers_disconnect_by_func(m_accountService,
                                          (void *)&onChanged, q);
     g_object_unref(m_accountService);
-    m_accountService = 0;
+    m_accountService = nullptr;
 }
 
 void AccountServicePrivate::onEnabled(AccountService *accountService,
@@ -173,7 +173,7 @@ void AccountServicePrivate::onChanged(AccountService *accountService)
  * @param service A Service supported by the account.
  */
 AccountService::AccountService(Account *account, const Service &service):
-    QObject(0),
+    QObject(nullptr),
     d_ptr(new AccountServicePrivate(account, service, this))
 {
 }
@@ -389,7 +389,7 @@ void AccountService::setValue(const QString &key, const QVariant &value)
     Q_D(AccountService);
 
     GVariant *variant = qVariantToGVariant(value);
-    if (variant == 0) {
+    if (variant == nullptr) {
         return;
     }
 
@@ -428,7 +428,7 @@ QVariant AccountService::value(const QString &key,
         ag_account_service_get_variant(d->m_accountService,
                                        ba.constData(),
                                        &settingSource);
-    if (source != 0) {
+    if (source != nullptr) {
         switch (settingSource) {
         case AG_SETTING_SOURCE_ACCOUNT: *source = ACCOUNT; break;
         case AG_SETTING_SOURCE_PROFILE: *source = TEMPLATE; break;
@@ -436,7 +436,7 @@ QVariant AccountService::value(const QString &key,
         }
     }
 
-    return (variant != 0) ? gVariantToQVariant(variant) : defaultValue;
+    return (variant != nullptr) ? gVariantToQVariant(variant) : defaultValue;
 }
 
 /*!
@@ -472,11 +472,11 @@ QStringList AccountService::changedFields() const
         ag_account_service_get_changed_fields(d->m_accountService);
 
     QStringList keyList;
-    if (changedFields == 0)
+    if (changedFields == nullptr)
         return keyList;
 
     gchar **keys = changedFields;
-    while (*keys != 0) {
+    while (*keys != nullptr) {
         keyList.append(QString(ASCII(*keys)));
         keys++;
     }

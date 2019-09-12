@@ -156,7 +156,7 @@ Account::Private::Private(Manager *manager, AgAccount *agAccount):
 
 void Account::Private::init(Account *account)
 {
-    if (m_account == 0) return;
+    if (m_account == nullptr) return;
     g_signal_connect_swapped(m_account, "display-name-changed",
                              G_CALLBACK(&Private::on_display_name_changed),
                              account);
@@ -224,16 +224,16 @@ Account::Account(Private *d, QObject *parent):
  */
 Account *Account::fromId(Manager *manager, AccountId id, QObject *parent)
 {
-    GError *error = 0;
+    GError *error = nullptr;
     AgAccount *account = ag_manager_load_account(manager->d->m_manager, id,
                                                  &error);
-    if (account == 0) {
-        Q_ASSERT(error != 0);
+    if (account == nullptr) {
+        Q_ASSERT(error != nullptr);
         manager->d->lastError = Error(error);
         g_error_free(error);
         return 0;
     }
-    Q_ASSERT(error == 0);
+    Q_ASSERT(error == nullptr);
     return new Account(new Private(manager, account), parent);
 }
 
@@ -258,7 +258,7 @@ Account::~Account()
         (d->m_account, (void *)&Private::on_deleted, this);
     g_object_unref(d->m_account);
     delete d;
-    d = 0;
+    d = nullptr;
 }
 
 /*!
@@ -608,7 +608,7 @@ void Account::remove(const QString &key)
 void Account::setValue(const QString &key, const QVariant &value)
 {
     GVariant *variant = qVariantToGVariant(value);
-    if (variant == 0) {
+    if (variant == nullptr) {
         return;
     }
 
@@ -657,7 +657,7 @@ QVariant Account::value(const QString &key, const QVariant &defaultValue,
     AgSettingSource settingSource;
     GVariant *variant =
         ag_account_get_variant(d->m_account, ba.constData(), &settingSource);
-    if (source != 0) {
+    if (source != nullptr) {
         switch (settingSource) {
         case AG_SETTING_SOURCE_ACCOUNT: *source = ACCOUNT; break;
         case AG_SETTING_SOURCE_PROFILE: *source = TEMPLATE; break;
@@ -665,7 +665,7 @@ QVariant Account::value(const QString &key, const QVariant &defaultValue,
         }
     }
 
-    return (variant != 0) ? gVariantToQVariant(variant) : defaultValue;
+    return (variant != nullptr) ? gVariantToQVariant(variant) : defaultValue;
 }
 
 /*!

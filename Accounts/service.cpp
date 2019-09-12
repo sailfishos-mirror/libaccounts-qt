@@ -47,9 +47,9 @@ namespace Accounts {
 
 Service::Service(AgService *service, ReferenceMode mode):
     m_service(service),
-    m_tags(0)
+    m_tags(nullptr)
 {
-    if (m_service != 0 && mode == AddReference)
+    if (m_service != nullptr && mode == AddReference)
         ag_service_ref(m_service);
 }
 
@@ -57,8 +57,8 @@ Service::Service(AgService *service, ReferenceMode mode):
  * Construct an invalid service.
  */
 Service::Service():
-    m_service(0),
-    m_tags(0)
+    m_service(nullptr),
+    m_tags(nullptr)
 {
 }
 
@@ -68,32 +68,32 @@ Service::Service():
  */
 Service::Service(const Service &other):
     m_service(other.m_service),
-    m_tags(0)
+    m_tags(nullptr)
 {
-    if (m_service != 0)
+    if (m_service != nullptr)
         ag_service_ref(m_service);
 }
 
 Service &Service::operator=(const Service &other)
 {
     if (m_service == other.m_service) return *this;
-    if (m_service != 0)
+    if (m_service != nullptr)
         ag_service_unref(m_service);
     m_service = other.m_service;
-    if (m_service != 0)
+    if (m_service != nullptr)
         ag_service_ref(m_service);
     return *this;
 }
 
 Service::~Service()
 {
-    if (m_service != 0) {
+    if (m_service != nullptr) {
         ag_service_unref(m_service);
-        m_service = 0;
+        m_service = nullptr;
     }
-    if (m_tags != 0) {
+    if (m_tags != nullptr) {
         delete m_tags;
-        m_tags = 0;
+        m_tags = nullptr;
     }
 }
 
@@ -103,7 +103,7 @@ Service::~Service()
  */
 bool Service::isValid() const
 {
-    return m_service != 0;
+    return m_service != nullptr;
 }
 
 /*!

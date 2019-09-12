@@ -47,9 +47,9 @@ namespace Accounts {
 
 ServiceType::ServiceType(AgServiceType *serviceType, ReferenceMode mode):
     m_serviceType(serviceType),
-    m_tags(0)
+    m_tags(nullptr)
 {
-    if (m_serviceType != 0 && mode == AddReference)
+    if (m_serviceType != nullptr && mode == AddReference)
         ag_service_type_ref(m_serviceType);
 }
 
@@ -57,8 +57,8 @@ ServiceType::ServiceType(AgServiceType *serviceType, ReferenceMode mode):
  * Construct an invalid serviceType.
  */
 ServiceType::ServiceType():
-    m_serviceType(0),
-    m_tags(0)
+    m_serviceType(nullptr),
+    m_tags(nullptr)
 {
 }
 
@@ -68,32 +68,32 @@ ServiceType::ServiceType():
  */
 ServiceType::ServiceType(const ServiceType &other):
     m_serviceType(other.m_serviceType),
-    m_tags(0)
+    m_tags(nullptr)
 {
-    if (m_serviceType != 0)
+    if (m_serviceType != nullptr)
         ag_service_type_ref(m_serviceType);
 }
 
 ServiceType &ServiceType::operator=(const ServiceType &other)
 {
     if (m_serviceType == other.m_serviceType) return *this;
-    if (m_serviceType != 0)
+    if (m_serviceType != nullptr)
         ag_service_type_unref(m_serviceType);
     m_serviceType = other.m_serviceType;
-    if (m_serviceType != 0)
+    if (m_serviceType != nullptr)
         ag_service_type_ref(m_serviceType);
     return *this;
 }
 
 ServiceType::~ServiceType()
 {
-    if (m_serviceType != 0) {
+    if (m_serviceType != nullptr) {
         ag_service_type_unref(m_serviceType);
-        m_serviceType = 0;
+        m_serviceType = nullptr;
     }
-    if (m_tags != 0) {
+    if (m_tags != nullptr) {
         delete m_tags;
-        m_tags = 0;
+        m_tags = nullptr;
     }
 }
 
@@ -103,7 +103,7 @@ ServiceType::~ServiceType()
  */
 bool ServiceType::isValid() const
 {
-    return m_serviceType != 0;
+    return m_serviceType != nullptr;
 }
 
 /*!
