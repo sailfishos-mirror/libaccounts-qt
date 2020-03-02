@@ -44,7 +44,8 @@ namespace Accounts {
 }; // namespace
 
 Provider::Provider(AgProvider *provider, ReferenceMode mode):
-    m_provider(provider)
+    m_provider(provider),
+    m_tags(nullptr)
 {
     if (m_provider != nullptr && mode == AddReference)
         ag_provider_ref(m_provider);
@@ -54,7 +55,8 @@ Provider::Provider(AgProvider *provider, ReferenceMode mode):
  * Construct an invalid provider.
  */
 Provider::Provider():
-    m_provider(nullptr)
+    m_provider(nullptr),
+    m_tags(nullptr)
 {
 }
 
@@ -63,7 +65,8 @@ Provider::Provider():
  * data is shared among copies.
  */
 Provider::Provider(const Provider &other):
-    m_provider(other.m_provider)
+    m_provider(other.m_provider),
+    m_tags(nullptr)
 {
     if (m_provider != nullptr)
         ag_provider_ref(m_provider);
@@ -85,6 +88,10 @@ Provider::~Provider()
     if (m_provider != nullptr) {
         ag_provider_unref(m_provider);
         m_provider = nullptr;
+    }
+    if (m_tags != nullptr) {
+        delete m_tags;
+        m_tags = nullptr;
     }
 }
 
@@ -169,6 +176,44 @@ QString Provider::domainsRegExp() const
 bool Provider::isSingleAccount() const
 {
     return ag_provider_get_single_account(m_provider);
+}
+
+/*!
+ * Check if this provider has a tag.
+ *
+ * @param tag Tag to look for
+ *
+ * @return Provider has the tag?
+ */
+bool Provider::hasTag(const QString &tag) const
+{
+    if (!m_tags) {
+        // Retrieve the tags
+        tags();
+    }
+
+    return m_tags->contains(tag);
+}
+
+/*!
+ * Return all tags of the provider as a set.
+ *
+ * @return Set of tags
+ */
+QSet<QString> Provider::tags() const
+{
+    if (m_tags)
+        return *m_tags;
+
+    m_tags = new QSet<QString>;
+    GList *list = ag_provider_get_tags(m_provider);
+    GList *iter = list;
+    while (iter != NULL) {
+        m_tags->insert(UTF8(reinterpret_cast<const gchar *> (iter->data)));
+        iter = g_list_next(iter);
+    }
+    g_list_free(list);
+    return *m_tags;
 }
 
 /*!

@@ -63,6 +63,8 @@ public:
     QString iconName() const;
     QString domainsRegExp() const;
     bool isSingleAccount() const;
+    bool hasTag(const QString &tag) const;
+    QSet<QString> tags() const;
     const QDomDocument domDocument() const;
 
     friend inline bool operator==(const Accounts::Provider &p1,
@@ -76,6 +78,7 @@ private:
     Provider(AgProvider *provider, ReferenceMode mode = AddReference);
     AgProvider *provider() const;
     AgProvider *m_provider;
+    mutable QSet<QString> *m_tags;
     // \endcond
 };
 

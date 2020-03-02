@@ -289,6 +289,7 @@ void AccountsTest::testProvider()
     QCOMPARE(provider.pluginName(), QString("generic-oauth"));
     QCOMPARE(provider.domainsRegExp(), QString(".*example.net"));
     QCOMPARE(provider.isSingleAccount(), true);
+    QCOMPARE(provider.tags().contains("user-group:mygroup"), true);
 
     QDomDocument dom = provider.domDocument();
     QDomElement root = dom.documentElement();

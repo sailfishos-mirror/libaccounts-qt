@@ -7,6 +7,9 @@
   <plugin>generic-oauth</plugin>
   <domains>.*example.net</domains>
   <single-account>true</single-account>
+  <tags>
+    <tag>user-group:mygroup</tag>
+  </tags>
 
   <template>
     <group name="auth">
