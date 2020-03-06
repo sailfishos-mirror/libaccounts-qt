@@ -4,20 +4,65 @@ cache:
   key: apt-cache
   paths:
   - apt-cache/
+    # for build_dependencies
+  - libaccounts-glib
+
+stages:
+  - deps
+  - build
+  - test
+  - deploy
 
 before_script:
   - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
-  - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y qt5-qmake qttools5-dev-tools qtbase5-dev qtchooser pkg-config doxygen libaccounts-glib-dev
+  - PACKAGES+=" wget" # for downloading dependencies
+  - PACKAGES+=" meson libglib2.0-dev libsqlite3-dev libxml2-dev gtk-doc-tools libgirepository1.0-dev gobject-introspection libxml2-utils python3-gi python-gi-dev valac check" # for libaccounts-glib
+  - |
+      apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y \
+          qt5-qmake qttools5-dev-tools qtbase5-dev qtchooser pkg-config doxygen \
+          $PACKAGES
   - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y dbus-test-runner lcov gcovr
+
+
+build_dependencies:
+  stage: deps
+  artifacts:
+    paths:
+      - staging
+  script:
+    - STAGING="$PWD/staging"
+
+      # Build libaccounts-glib
+    - LIBACCOUNTS_VERSION="master"
+    - LIBACCOUNTS_ARCHIVE="libaccounts-glib-${LIBACCOUNTS_VERSION}.tar.bz2"
+    - mkdir libaccounts-glib && cd libaccounts-glib
+    - if [ ! -d "libaccounts-glib-${LIBACCOUNTS_VERSION}" ]; then
+    -   if [ ! -f "$LIBACCOUNTS_ARCHIVE" ]; then
+    -     wget -c -nv "https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/master/$LIBACCOUNTS_ARCHIVE"
+    -   fi
+    -   tar xjf "$LIBACCOUNTS_ARCHIVE"
+    - fi
+    - cd "libaccounts-glib-${LIBACCOUNTS_VERSION}"
+    - mkdir build 
+    - meson build --prefix $STAGING --libdir lib
+    - cd build
+    - ninja
+    - ninja install || true # This currently fails on gtkdoc, but the important bits get done
+
 
 build_amd64:
   stage: build
   script:
+    - STAGING="$PWD/staging"
+    - export PKG_CONFIG_PATH="$STAGING/lib/pkgconfig:$PKG_CONFIG_PATH"
+    - export LD_LIBRARY_PATH="$STAGING/lib:$LD_LIBRARY_PATH"
     - export QT_SELECT=qt5
     - mkdir build
     - cd build
     - qmake CONFIG+=debug CONFIG+=coverage ..
     - make -j 4
+  dependencies:
+    - build_dependencies
   artifacts:
     paths:
       - build/
@@ -25,10 +70,13 @@ build_amd64:
 test_amd64:
   stage: test
   script:
+    - STAGING="$PWD/staging"
+    - export LD_LIBRARY_PATH="$STAGING/lib:$LD_LIBRARY_PATH"
     - find build | xargs touch # Avoid rebuilding
     - cd build
     - make coverage-html
   dependencies:
+    - build_dependencies
     - build_amd64
   artifacts:
     paths:
