@@ -25,7 +25,7 @@
 #include "utils.h"
 
 #undef signals
-#include <libaccounts-glib/ag-auth-data.h>
+#include <libaccounts-glib.h>
 #include <QtDebug>
 #include <QtGlobal>
 

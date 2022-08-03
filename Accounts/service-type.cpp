@@ -27,7 +27,7 @@
 #include "service-type.h"
 
 #undef signals
-#include <libaccounts-glib/ag-service-type.h>
+#include <libaccounts-glib.h>
 
 using namespace Accounts;
 

@@ -27,7 +27,7 @@
 
 #include <QHash>
 #include <QPointer>
-#include <libaccounts-glib/ag-manager.h>
+#include <libaccounts-glib.h>
 
 namespace Accounts {
 

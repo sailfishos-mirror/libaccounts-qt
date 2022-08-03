@@ -28,7 +28,7 @@
 #include "utils.h"
 
 #include <QPointer>
-#include <libaccounts-glib/ag-account.h>
+#include <libaccounts-glib.h>
 
 namespace Accounts {
 

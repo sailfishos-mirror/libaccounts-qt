@@ -23,7 +23,7 @@
 
 #include "error.h"
 
-#include <libaccounts-glib/ag-errors.h>
+#include <libaccounts-glib.h>
 
 namespace Accounts {
 

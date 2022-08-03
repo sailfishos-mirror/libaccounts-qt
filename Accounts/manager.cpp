@@ -27,7 +27,7 @@
 #include "manager.h"
 #include "manager_p.h"
 
-#include <libaccounts-glib/ag-account.h>
+#include <libaccounts-glib.h>
 
 
 namespace Accounts {
