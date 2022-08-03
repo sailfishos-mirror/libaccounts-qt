@@ -16,12 +16,13 @@ stages:
 before_script:
   - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
   - PACKAGES+=" wget" # for downloading dependencies
-  - PACKAGES+=" meson libglib2.0-dev libsqlite3-dev libxml2-dev gtk-doc-tools libgirepository1.0-dev gobject-introspection libxml2-utils python3-gi python-gi-dev valac check" # for libaccounts-glib
+  - PACKAGES+=" libglib2.0-dev libsqlite3-dev libxml2-dev gtk-doc-tools libgirepository1.0-dev gobject-introspection libxml2-utils python3-gi python-gi-dev valac check python3-pip" # for libaccounts-glib
   - |
       apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y \
           qt5-qmake qttools5-dev-tools qtbase5-dev qtchooser pkg-config doxygen \
           $PACKAGES
   - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y dbus-test-runner lcov gcovr
+  - pip3 install meson ninja
 
 
 build_dependencies:
