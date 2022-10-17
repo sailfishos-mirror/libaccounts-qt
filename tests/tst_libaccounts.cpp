@@ -516,8 +516,7 @@ void AccountsTest::testAccountValue()
     QTRY_COMPARE(synced.count(), 1);
 
     /* check that the values we wrote are retrieved successfully */
-    QVariant val = QVariant::String;
-    account->value(QString("test"), val);
+    QVariant val = account->value(QString("test"));
     QCOMPARE(val.toString(), QString("value"));
 
     SettingSource source;
