@@ -548,7 +548,7 @@ void Account::endGroup()
 {
     d->prefix = d->prefix.section(slash, 0, -3,
                                   QString::SectionIncludeTrailingSep);
-    if (d->prefix[0] == slash) d->prefix.remove(0, 1);
+    if (!d->prefix.isEmpty() && d->prefix[0] == slash) d->prefix.remove(0, 1);
 }
 
 /*!
