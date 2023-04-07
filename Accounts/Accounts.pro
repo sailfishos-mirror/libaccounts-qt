@@ -3,7 +3,7 @@ include( ../common-project-config.pri )
 include( ../common-vars.pri )
 
 TEMPLATE = lib
-TARGET = accounts-qt5
+TARGET = accounts-qt$${QT_MAJOR_VERSION}
 
 # Input
 public_headers = \
@@ -45,7 +45,7 @@ QT -= gui
 
 INCLUDEPATH += $${TOP_SRC_DIR}
 
-CMAKE_BASENAME = AccountsQt5
+CMAKE_BASENAME = AccountsQt$${QT_MAJOR_VERSION}
 
 PKGCONFIG += \
 	glib-2.0 \

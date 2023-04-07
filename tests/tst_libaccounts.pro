@@ -9,7 +9,7 @@ QT = \
     testlib \
     xml
 
-LIBS += -laccounts-qt5
+LIBS += -laccounts-qt$${QT_MAJOR_VERSION}
 
 INCLUDEPATH += $${TOP_SRC_DIR}
 QMAKE_LIBDIR += \
