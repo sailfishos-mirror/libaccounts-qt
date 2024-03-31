@@ -137,6 +137,7 @@ test_amd64_qt6:
 
 pages:
   stage: deploy
+  image: ubuntu:bionic
   script:
     - find build | xargs touch # Avoid rebuilding
     - cd build
