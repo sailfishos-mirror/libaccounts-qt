@@ -138,6 +138,12 @@ test_amd64_qt6:
 pages:
   stage: deploy
   image: ubuntu:bionic
+  before_script:
+    - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+    - |
+        apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y \
+            qt5-qmake qttools5-dev-tools qtbase5-dev qtchooser pkg-config doxygen wget libglib2.0-dev libsqlite3-dev libxml2-dev gtk-doc-tools libgirepository1.0-dev gobject-introspection libxml2-utils python3-gi python-gi-dev valac check python3-pip
+    - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y dbus-test-runner lcov gcovr
   script:
     - find build | xargs touch # Avoid rebuilding
     - cd build
