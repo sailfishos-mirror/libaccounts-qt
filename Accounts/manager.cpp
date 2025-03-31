@@ -90,6 +90,12 @@ namespace Accounts {
 
 } //namespace Accounts
 
+static void registerTypes()
+{
+    qRegisterMetaType<Accounts::AccountId>("Accounts::AccountId");
+    qRegisterMetaType<Accounts::Error>("Accounts::Error");
+}
+
 using namespace Accounts;
 
 void Manager::Private::init(Manager *q, AgManager *manager)
@@ -156,6 +162,7 @@ Manager::Manager(QObject *parent):
         d->lastError = Error::DatabaseLocked;
     }
 
+    registerTypes();
 }
 
 /*!
@@ -184,6 +191,7 @@ Manager::Manager(const QString &serviceType, QObject *parent):
         d->lastError = Error::DatabaseLocked;
     }
 
+    registerTypes();
 }
 
 /*!
@@ -209,6 +217,8 @@ Manager::Manager(Options options, QObject *parent):
         d->lastError = Error(error);
         g_error_free(error);
     }
+
+    registerTypes();
 }
 
 /*!

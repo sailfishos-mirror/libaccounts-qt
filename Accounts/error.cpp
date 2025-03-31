@@ -35,8 +35,6 @@ namespace Accounts {
 
 Error::Error(const GError *error)
 {
-    registerType();
-
     if (error == NULL) {
         m_type = NoError;
         m_message = QString();

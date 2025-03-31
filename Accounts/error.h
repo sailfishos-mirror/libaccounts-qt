@@ -59,7 +59,7 @@ public:
     /*!
      * Basic constructor.
      */
-    Error(): m_type(NoError), m_message(QString()) { registerType(); }
+    Error(): m_type(NoError), m_message(QString()) { }
 
     /*!
      * Copy constructor
@@ -75,7 +75,7 @@ public:
      */
     Error(ErrorType type, const QString &message = QString()):
         m_type(type), m_message(message)
-        { registerType(); }
+        { }
 
     /*!
      * Assignment operator.
@@ -104,8 +104,6 @@ private:
     friend class Account;
     friend class Manager;
     Error(const GError *error);
-
-    inline void registerType();
     // \endcond
 
 private:
@@ -118,10 +116,5 @@ private:
 } //namespace
 
 Q_DECLARE_METATYPE(Accounts::Error)
-
-void Accounts::Error::registerType()
-{
-    qRegisterMetaType<Accounts::Error>("Accounts::Error");
-}
 
 #endif // ACCOUNTS_ERROR_H
