@@ -134,7 +134,6 @@ void AccountsTest::cleanupTestCase()
 void AccountsTest::testManager()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
     QCOMPARE(mgr->serviceType(), QString());
 
     mgr->setAbortOnTimeout(true);
@@ -157,7 +156,6 @@ void AccountsTest::testCreateAccount()
     clearDb();
 
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(NULL);
     QVERIFY(account != 0);
@@ -176,7 +174,6 @@ void AccountsTest::testAccount()
     clearDb();
 
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     //this should not exist
     Account *account2 = mgr->account(1);
@@ -244,7 +241,6 @@ void AccountsTest::testAccountList()
     clearDb();
 
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     // make sure there is account
     Account *account = mgr->createAccount(NULL);
@@ -264,7 +260,6 @@ void AccountsTest::testAccountList()
 void AccountsTest::testProvider()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(PROVIDER);
     QVERIFY(account != 0);
@@ -318,7 +313,6 @@ void AccountsTest::testProvider()
 void AccountsTest::testService()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Service service = mgr->service(MYSERVICE);
     QVERIFY(service.isValid());
@@ -343,7 +337,6 @@ void AccountsTest::testService()
 void AccountsTest::testServiceList()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     ServiceList list = mgr->serviceList();
     QVERIFY(!list.isEmpty());
@@ -361,7 +354,6 @@ void AccountsTest::testServiceList()
 void AccountsTest::testServiceConst()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Service service = mgr->service(MYSERVICE);
     QVERIFY(service.isValid());
@@ -381,7 +373,6 @@ void AccountsTest::testServiceConst()
 void AccountsTest::testAccountConst()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(PROVIDER);
     QVERIFY(account != 0);
@@ -394,7 +385,6 @@ void AccountsTest::testAccountConst()
 void AccountsTest::testAccountProvider()
 {
     Manager *manager = new Manager();
-    QVERIFY(manager != 0);
 
     Account *account = manager->createAccount("MyProvider");
     QVERIFY(account != 0);
@@ -411,7 +401,6 @@ void AccountsTest::testAccountProvider()
 void AccountsTest::testAccountServices()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount("MyProvider");
     QVERIFY(account != 0);
@@ -449,7 +438,6 @@ void AccountsTest::testAccountServices()
 void AccountsTest::testAccountEnabled()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(PROVIDER);
     QVERIFY(account != 0);
@@ -474,7 +462,6 @@ void AccountsTest::testAccountEnabled()
 void AccountsTest::testAccountDisplayName()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(PROVIDER);
     QVERIFY(account != 0);
@@ -491,12 +478,9 @@ void AccountsTest::testAccountDisplayName()
     delete mgr;
 }
 
-
-
 void AccountsTest::testAccountValue()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(PROVIDER);
     QVERIFY(account != 0);
@@ -558,7 +542,6 @@ void AccountsTest::testAccountValue()
 void AccountsTest::testAccountSync()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(PROVIDER);
     QVERIFY(account != 0);
@@ -578,7 +561,6 @@ void AccountsTest::testAccountSync()
 void AccountsTest::testCreated()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     QSignalSpy created(mgr, SIGNAL(accountCreated(Accounts::AccountId)));
 
@@ -599,7 +581,6 @@ void AccountsTest::testCreated()
 void AccountsTest::testRemove()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(NULL);
     QVERIFY(account != 0);
@@ -632,7 +613,6 @@ void AccountsTest::onAccountServiceChanged()
 void AccountsTest::testAccountService()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Service service = mgr->service(MYSERVICE);
     QVERIFY(service.isValid());
@@ -783,7 +763,6 @@ void AccountsTest::testAccountService()
 void AccountsTest::testWatches()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Service service = mgr->service(MYSERVICE);
     QVERIFY(service.isValid());
@@ -863,7 +842,6 @@ void AccountsTest::testWatches()
 void AccountsTest::testServiceData()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Service service = mgr->service(MYSERVICE);
     QVERIFY(service.isValid());
@@ -877,7 +855,6 @@ void AccountsTest::testServiceData()
 void AccountsTest::testSettings()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     /* create an account and some watches */
     Account *account = mgr->createAccount(NULL);
@@ -1028,7 +1005,6 @@ void AccountsTest::testKeySignVerify()
     bool ok;
 
     Manager *mgr = new Manager();
-    QVERIFY (mgr != 0);
 
     Account *account = mgr->createAccount(NULL);
     QVERIFY(account != 0);
@@ -1053,7 +1029,6 @@ void AccountsTest::testIncrementalAccountIds()
     clearDb();
 
     Manager *mgr = new Manager;
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount(NULL);
     QVERIFY(account != 0);
@@ -1079,7 +1054,6 @@ void AccountsTest::testIncrementalAccountIds()
 void AccountsTest::testSelectGlobalAccountSettings()
 {
     Manager *mgr = new Manager;
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount("MyProvider");
     QVERIFY(account != 0);
@@ -1098,7 +1072,6 @@ void AccountsTest::testSelectGlobalAccountSettings()
 void AccountsTest::testCredentialsId()
 {
     Manager *mgr = new Manager;
-    QVERIFY(mgr != 0);
 
     Account *account = mgr->createAccount("MyProvider");
     QVERIFY(account != 0);
@@ -1137,7 +1110,6 @@ void AccountsTest::testCredentialsId()
 void AccountsTest::testAuthData()
 {
     Manager *manager = new Manager;
-    QVERIFY(manager != 0);
 
     Account *account = manager->createAccount("MyProvider");
     QVERIFY(account != 0);
@@ -1182,7 +1154,6 @@ void AccountsTest::testAuthData()
     QVERIFY(account->id() != 0);
 
     AccountService *accountService = new AccountService(account, service);
-    QVERIFY(accountService != 0);
 
     AuthData authData = accountService->authData();
     QCOMPARE(authData.method(), method);
@@ -1216,7 +1187,6 @@ void AccountsTest::testAuthData()
 void AccountsTest::testGlobalAuthData()
 {
     Manager *manager = new Manager;
-    QVERIFY(manager != 0);
 
     Account *account = manager->createAccount("MyProvider");
     QVERIFY(account != 0);
@@ -1225,7 +1195,6 @@ void AccountsTest::testGlobalAuthData()
     QVERIFY(!service.isValid());
 
     AccountService *accountService = new AccountService(account, service);
-    QVERIFY(accountService != 0);
 
     AuthData authData = accountService->authData();
     QCOMPARE(authData.method(), QString("oauth2"));
@@ -1247,7 +1216,6 @@ void AccountsTest::testListEnabledServices()
     clearDb();
 
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     Service service = mgr->service(MYSERVICE);
     QVERIFY(service.isValid());
@@ -1279,7 +1247,6 @@ void AccountsTest::testListEnabledByServiceType()
     clearDb();
 
     Manager *mgr = new Manager("e-mail");
-    QVERIFY(mgr != 0);
     QCOMPARE(mgr->serviceType(), QString("e-mail"));
 
     Account *account = mgr->createAccount("MyProvider");
@@ -1312,7 +1279,6 @@ void AccountsTest::testListEnabledByServiceType()
 void AccountsTest::testEnabledEvent()
 {
     Manager *mgr = new Manager("e-mail");
-    QVERIFY(mgr != 0);
 
     QSignalSpy enabledEvent1(mgr, SIGNAL(enabledEvent(Accounts::AccountId)));
 
@@ -1326,7 +1292,6 @@ void AccountsTest::testEnabledEvent()
 
     //if we create manager without service type the signal should not be emitted
     Manager *mgr2 = new Manager();
-    QVERIFY(mgr2 != 0);
 
     QSignalSpy enabledEvent2(mgr2, SIGNAL(enabledEvent(Accounts::AccountId)));
 
@@ -1346,7 +1311,6 @@ void AccountsTest::testEnabledEvent()
 void AccountsTest::testServiceType()
 {
     Manager *mgr = new Manager();
-    QVERIFY(mgr != 0);
 
     ServiceType serviceType;
 
@@ -1382,7 +1346,6 @@ void AccountsTest::testUpdateAccount()
     clearDb();
 
     Manager *mgr = new Manager("e-mail");
-    QVERIFY(mgr != 0);
 
     QSignalSpy accountUpdated(mgr,
                               SIGNAL(accountUpdated(Accounts::AccountId)));
@@ -1401,9 +1364,8 @@ void AccountsTest::testUpdateAccount()
     QTRY_COMPARE(accountUpdated.count(), 1);
     QCOMPARE(accountUpdated.at(0).at(0).toUInt(), account->id());
 
-    //if we create manager without service type the signal shoudl not be emitted
+    // if we create manager without service type the signal should not be emitted
     Manager *mgr2 = new Manager();
-    QVERIFY(mgr2 != 0);
 
     QSignalSpy accountUpdated2(mgr2,
                                SIGNAL(accountUpdated(Accounts::AccountId)));
@@ -1425,7 +1387,6 @@ void AccountsTest::testUpdateAccount()
 void AccountsTest::testApplication()
 {
     Manager *manager = new Manager();
-    QVERIFY(manager != 0);
 
     Application application = manager->application("Mailer");
     QVERIFY(application.isValid());
@@ -1472,7 +1433,6 @@ void AccountsTest::testApplication()
 void AccountsTest::testApplicationListServices()
 {
     Manager *manager = new Manager();
-    QVERIFY(manager != 0);
 
     Application application = manager->application("Mailer");
     QVERIFY(application.isValid());
