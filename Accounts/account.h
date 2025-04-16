@@ -112,7 +112,7 @@ public:
     ServiceList services(const QString &serviceType = QString()) const;
     ServiceList enabledServices() const;
 
-    bool enabled() const;
+    Q_DECL_DEPRECATED_X("Use Account::isEnabled") bool enabled() const;
     bool isEnabled() const;
     void setEnabled(bool);
 
@@ -160,7 +160,7 @@ public:
     QVariant value(const QString &key,
                    const QVariant &defaultValue = QVariant(),
                    SettingSource *source = nullptr) const;
-    SettingSource value(const QString &key, QVariant &value) const;
+    Q_DECL_DEPRECATED_X("Use Account::value() with settings source") SettingSource value(const QString &key, QVariant &value) const;
     QString valueAsString(const QString &key,
                           QString default_value = QString(),
                           SettingSource *source = nullptr) const;

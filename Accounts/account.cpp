@@ -710,11 +710,7 @@ QString Account::valueAsString(const QString &key,
                                QString default_value,
                                SettingSource *source) const
 {
-    QVariant var = default_value;
-    SettingSource src = value(key, var);
-    if (source)
-        *source = src;
-    return var.toString();
+    return value(key, default_value, source).toString();
 }
 
 /*!
@@ -730,11 +726,7 @@ int Account::valueAsInt(const QString &key,
                         int default_value,
                         SettingSource *source) const
 {
-    QVariant var = default_value;
-    SettingSource src = value(key, var);
-    if (source)
-        *source = src;
-    return var.toInt();
+    return value(key, default_value, source).toInt();
 }
 
 /*!
@@ -750,11 +742,7 @@ quint64 Account::valueAsUInt64(const QString &key,
                         quint64 default_value,
                         SettingSource *source) const
 {
-    QVariant var = default_value;
-    SettingSource src = value(key, var);
-    if (source)
-        *source = src;
-    return var.toULongLong();
+    return value(key, default_value, source).toULongLong();
 }
 
 /*!
@@ -770,11 +758,7 @@ bool Account::valueAsBool(const QString &key,
                           bool default_value,
                           SettingSource *source) const
 {
-    QVariant var = default_value;
-    SettingSource src = value(key, var);
-    if (source)
-        *source = src;
-    return var.toBool();
+    return value(key, default_value, source).toBool();
 }
 
 void Watch::Private::account_notify_cb(AgAccount *account, const gchar *key,
@@ -935,16 +919,18 @@ bool Account::verifyWithTokens(const QString &key, QList<const char*> tokens)
 uint Account::credentialsId()
 {
     QString key = ACCOUNTS_KEY_CREDENTIALS_ID;
-    QVariant val(QVariant::Int);
-
-    if (value(key, val) != NONE)
+    SettingSource source;
+    QVariant val = value(key, QVariant(), &source);
+    if (source != NONE)
         return val.toUInt();
 
     uint id = 0;
     Service service = selectedService();
     if (service.isValid()) {
         selectService();
-        if (value(key, val) != NONE)
+        val = value(key, QVariant(), &source);
+
+        if (source != NONE)
             id = val.toUInt();
         selectService(service);
     }

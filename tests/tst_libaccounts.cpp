@@ -445,13 +445,13 @@ void AccountsTest::testAccountEnabled()
 
     account->setEnabled(true);
     account->sync();
-    QVERIFY(account->enabled());
+    QVERIFY(account->isEnabled());
     QTRY_COMPARE(enabled.count(), 1);
     QCOMPARE(enabled.at(0).at(1).toBool(), true);
     enabled.clear();
     account->setEnabled(false);
     account->sync();
-    QVERIFY(!account->enabled());
+    QVERIFY(!account->isEnabled());
     QTRY_COMPARE(enabled.count(), 1);
     QCOMPARE(enabled.at(0).at(1).toBool(), false);
 
@@ -504,13 +504,12 @@ void AccountsTest::testAccountValue()
     QCOMPARE(val.toString(), QString("value"));
 
     SettingSource source;
-    source = account->value(QString("test"), val);
+    val = account->value(QString("test"), QVariant(), &source);
     QCOMPARE(val.toString(), QString("value"));
 
-    QVariant intval = QVariant::Int;
-    account->value("testint", intval);
-    qDebug("Val: %d", intval.toInt());
-    QVERIFY(intval.toInt() == int_value);
+    QVariant intResult = account->value("testint", QVariant(), &source);
+    qDebug("Val: %d", intResult.toInt());
+    QVERIFY(intResult.toInt() == int_value);
 
     QVERIFY(source == ACCOUNT);
 
