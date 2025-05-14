@@ -226,15 +226,17 @@ Manager::Manager(Options options, QObject *parent):
  */
 Manager::~Manager()
 {
-    g_signal_handlers_disconnect_by_func
-        (d->m_manager, (void *)&Private::on_enabled_event, this);
-    g_signal_handlers_disconnect_by_func
-        (d->m_manager, (void *)&Private::on_account_updated, this);
-    g_signal_handlers_disconnect_by_func
-        (d->m_manager, (void *)&Private::on_account_deleted, this);
-    g_signal_handlers_disconnect_by_func
-        (d->m_manager, (void *)&Private::on_account_created, this);
-    g_object_unref(d->m_manager);
+    if (d->m_manager) {
+        g_signal_handlers_disconnect_by_func
+            (d->m_manager, (void *)&Private::on_enabled_event, this);
+        g_signal_handlers_disconnect_by_func
+            (d->m_manager, (void *)&Private::on_account_updated, this);
+        g_signal_handlers_disconnect_by_func
+            (d->m_manager, (void *)&Private::on_account_deleted, this);
+        g_signal_handlers_disconnect_by_func
+            (d->m_manager, (void *)&Private::on_account_created, this);
+        g_object_unref(d->m_manager);
+    }
 
     delete d;
     d = nullptr;
