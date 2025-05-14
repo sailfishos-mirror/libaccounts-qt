@@ -78,7 +78,7 @@ public:
     Watch(QObject *parent = nullptr);
     ~Watch();
 
-    void setWatch(AgAccountWatch w) { watch = w; };
+    void setWatch(AgAccountWatch w) { watch = w; }
     class Private;
     // \endcond
 

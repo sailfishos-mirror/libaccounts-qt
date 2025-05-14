@@ -39,7 +39,7 @@ namespace Accounts {
  * to retrieve some basic properties of the provider (such as the name) and to
  * get access to the contents of the XML file which defines it.
  */
-}; // namespace
+} // namespace
 
 Provider::Provider(AgProvider *provider, ReferenceMode mode):
     m_provider(provider),

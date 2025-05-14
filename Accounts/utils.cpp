@@ -150,4 +150,4 @@ GVariant *qVariantToGVariant(const QVariant &variant)
     return ret;
 }
 
-}; // namespace
+} // namespace

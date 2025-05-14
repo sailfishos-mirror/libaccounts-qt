@@ -39,7 +39,7 @@ namespace Accounts {
  * applications registered with libaccounts.
  * It is instantiated by Manager::application() and Manager::applicationList().
  */
-}; // namespace
+} // namespace
 
 Application::Application(AgApplication *application):
     m_application(application)

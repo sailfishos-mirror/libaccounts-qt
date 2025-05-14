@@ -73,5 +73,5 @@ Error::Error(const GError *error)
     }
 }
 
-}; // namespace
+} // namespace
 

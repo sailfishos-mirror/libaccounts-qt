@@ -42,7 +42,7 @@ namespace Accounts {
  * parameters used by an account. It is an implicitly shared object which can
  * be created with the AccountService::authData method.
  */
-}; // namespace
+} // namespace
 
 AuthData::AuthData(AgAuthData *authData):
     m_authData(ag_auth_data_ref(authData))

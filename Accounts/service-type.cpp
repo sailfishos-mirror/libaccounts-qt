@@ -42,7 +42,7 @@ namespace Accounts {
  * name and icon) and to get access to the contents of the XML file which
  * defines it.
  */
-}; // namespace
+} // namespace
 
 ServiceType::ServiceType(AgServiceType *serviceType, ReferenceMode mode):
     m_serviceType(serviceType),
