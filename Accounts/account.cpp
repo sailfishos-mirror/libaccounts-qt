@@ -688,8 +688,15 @@ SettingSource Account::value(const QString &key, QVariant &value) const
     SettingSource source;
     QVariant variant = this->value(key, QVariant(), &source);
     if (variant.isValid()) {
-        if (value.type() != variant.type()) {
-            if (!variant.convert(value.type())) source = NONE;
+#if QT_VERSION < 0x060000
+        const bool needsConversion = (value.type() != variant.type());
+        const auto targetType = value.type();
+#else
+        const bool needsConversion = (value.typeId() != variant.typeId());
+        const auto targetType = value.metaType();
+#endif
+        if (needsConversion) {
+            if (!variant.convert(targetType)) source = NONE;
         }
         value = variant;
     }
