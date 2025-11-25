@@ -119,28 +119,34 @@ GVariant *qVariantToGVariant(const QVariant &variant)
     GVariant *ret = nullptr;
     QByteArray tmpvalue;
 
-    switch (variant.type())
+#if QT_VERSION < 0x060000
+    const auto type = QMetaType::Type(variant.type());
+#else
+    const auto type = QMetaType::Type(variant.typeId());
+#endif
+
+    switch (type)
     {
-    case QVariant::String:
+    case QMetaType::QString:
         tmpvalue = variant.toString().toUtf8();
         ret = g_variant_new_string(tmpvalue.constData());
         break;
-    case QVariant::Int:
+    case QMetaType::Int:
         ret = g_variant_new_int32(variant.toInt());
         break;
-    case QVariant::UInt:
+    case QMetaType::UInt:
         ret = g_variant_new_uint32(variant.toUInt());
         break;
-    case QVariant::LongLong:
+    case QMetaType::LongLong:
         ret = g_variant_new_int64(variant.toLongLong());
         break;
-    case QVariant::ULongLong:
+    case QMetaType::ULongLong:
         ret = g_variant_new_uint64(variant.toULongLong());
         break;
-    case QVariant::Bool:
+    case QMetaType::Bool:
         ret = g_variant_new_boolean(variant.toBool());
         break;
-    case QVariant::StringList:
+    case QMetaType::QStringList:
         ret = qStringListToGVariant(variant.toStringList());
         break;
     default:
