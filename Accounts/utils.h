@@ -25,7 +25,7 @@
 #define ACCOUNTS_UTILS_H
 
 #include <QVariant>
-#undef signals
+
 #include <glib-object.h>
 
 namespace Accounts {

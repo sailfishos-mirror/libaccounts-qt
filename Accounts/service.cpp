@@ -26,7 +26,6 @@
 
 #include "service.h"
 
-#undef signals
 #include <libaccounts-glib.h>
 
 using namespace Accounts;
