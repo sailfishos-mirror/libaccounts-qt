@@ -8,6 +8,8 @@ applications. It is part of the @accounts-sso project.
 License
 -------
 
+SPDX-License-Identifier: LGPL-2.1-only
+
 See COPYING file.
 
 
