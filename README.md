@@ -16,10 +16,12 @@ See COPYING file.
 Build instructions
 ------------------
 
-The project depends on Qt 5 and [libaccounts-glib](https://gitlab.com/accounts-sso/libaccounts-glib).
+The project depends on [libaccounts-glib](https://gitlab.com/accounts-sso/libaccounts-glib).
+It can build against either Qt 5 or Qt 6.
+
 To build it, run:
 ```
-qmake
+qmake  # Or qmake-qt5 or qmake-qt6, depending on the distro
 make
 make install
 ```
