@@ -26,6 +26,9 @@
 
 #include "service-type.h"
 
+#include "compatibility.h"
+
+#undef signals
 #include <libaccounts-glib.h>
 
 using namespace Accounts;
@@ -204,14 +207,11 @@ const QDomDocument ServiceType::domDocument() const
     ag_service_type_get_file_contents(m_serviceType, &data, &len);
 
     QDomDocument doc;
-    QString errorStr;
-    int errorLine;
-    int errorColumn;
-    if (!doc.setContent(QByteArray(data, len), true,
-                        &errorStr, &errorLine, &errorColumn)) {
+    const auto result = compatibility::setContent(doc, QByteArray(data, len), compatibility::ParseOption::UseNamespaceProcessing);
+    if (!result) {
         QString message(QStringLiteral("Parse error reading serviceType file "
                               "at line %1, column %2:\n%3"));
-        message = message.arg(errorLine).arg(errorColumn).arg(errorStr);
+        message = message.arg(result.errorLine).arg(result.errorColumn).arg(result.errorMessage);
         qWarning() << __PRETTY_FUNCTION__ << message;
     }
 
