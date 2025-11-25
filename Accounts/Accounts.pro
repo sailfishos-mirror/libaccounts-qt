@@ -19,6 +19,7 @@ public_headers = \
     ServiceType service-type.h
 
 private_headers = \
+    compatibility.h \
     manager_p.h \
     utils.h
 
